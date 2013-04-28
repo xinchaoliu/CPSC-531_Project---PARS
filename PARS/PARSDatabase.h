@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <sqlite3.h>
+#import "PARSUserData.h"
 
 @interface PARSDatabase : NSObject
+{
+    sqlite3* _databaseConnection;
+}
+
++ (PARSDatabase*) db;
+
+- (NSArray*) selectUserWithEmail:(NSString*)theEmail
+                     andPassword:(NSString*)thePassword;
 
 @end

@@ -10,4 +10,17 @@
 
 @implementation PARSUserData
 
+@synthesize user_id;
+@synthesize user_name;
+
+- (id) initWithUserID:(NSString*)theUserID andUserName:(NSString*)theUserName
+{
+    self = [super init];
+    if (self) {
+        user_id = theUserID;
+        user_name = theUserName;
+    }
+    return self;
+}
+
 @end

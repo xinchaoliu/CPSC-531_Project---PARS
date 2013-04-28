@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PARSDatabase.h"
+#import "PARSUserData.h"
 
 @interface LoginViewController : UITableViewController
+
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (strong, nonatomic) NSArray* login;
+
+- (IBAction)signinButtonPressed:(id)sender;
 
 @end

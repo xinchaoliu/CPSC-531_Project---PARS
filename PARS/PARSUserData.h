@@ -10,4 +10,9 @@
 
 @interface PARSUserData : NSObject
 
+@property (strong, nonatomic) NSString* user_id;
+@property (strong, nonatomic) NSString* user_name;
+
+- (id) initWithUserID:(NSString*)theUserID andUserName:(NSString*)theUserName;
+
 @end
