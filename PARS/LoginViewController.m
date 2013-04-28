@@ -50,8 +50,12 @@
                                    andPassword:self.passwordTextField.text];
     PARSUserData* user = [self.login objectAtIndex: 0];
     if (user.user_id != nil)
-        NSLog(@"Login With UserID: %@, UserName: %@",user.user_id, user.user_name);
+    {
+        self.navBar.topItem.title =
+            [NSString stringWithFormat:@"Welcome, %@",user.user_name];
+        [self performSegueWithIdentifier:@"login" sender:self];
+    }
     else
-        NSLog(@"Wrong Password");
+        self.navBar.topItem.title = @"Wrong Password";
 }
 @end

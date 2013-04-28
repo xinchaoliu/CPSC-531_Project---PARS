@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "PARSDatabase.h"
 #import "PARSUserData.h"
+#import "TabBarController.h"
 
 @interface LoginViewController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (strong, nonatomic) NSArray* login;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
 - (IBAction)signinButtonPressed:(id)sender;
 
