@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Project. All rights reserved.
 //
 
-#import "MyAppsTableViewController.h"
+#import "PARSAppsTableViewController.h"
 
-@interface MyAppsTableViewController ()
+@interface PARSAppsTableViewController ()
 
 @end
 
-@implementation MyAppsTableViewController
+@implementation PARSAppsTableViewController
 
 @synthesize appList;
 @synthesize user;
@@ -57,9 +57,9 @@
 {
     static NSString *CellIdentifier = @"AppCell";
     AppCell *cell =
-        [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    PARSUserData* myApps = [appList objectAtIndex:indexPath.row];    
+    PARSUserData* myApps = [appList objectAtIndex:indexPath.row];
     cell.appIcon = [UIImage imageWithData:
                     [NSData dataWithContentsOfURL:
                      [NSURL URLWithString: myApps.app_icon_link]]];

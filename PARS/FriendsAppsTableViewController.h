@@ -11,7 +11,7 @@
 #import "PARSDatabase.h"
 #import "PARSUserData.h"
 
-@interface MyAppsTableViewController : UITableViewController
+@interface FriendsAppsTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray* appList;
 @property (strong, nonatomic) PARSUserData* user;

@@ -45,7 +45,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     MyAppsTableViewController* vc = segue.destinationViewController;
-    vc.userID = self.user.user_id;
+    vc.user = self.user;
 }
 
 @end
