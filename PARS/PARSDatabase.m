@@ -74,13 +74,17 @@ static PARSDatabase* _databaseObj;
     return login;
 }
 
-- (NSMutableArray*) selectAppsWithUserID:(NSString*)theUserID
+- (NSMutableArray*) selectMyAppsWithUserID:(NSString*)theUserID
 {
     NSMutableArray* appList = [[NSMutableArray alloc] init];
-    NSString* query1 = @"SELECT * FROM app INNER JOIN has ON app.app_id = ";
-    NSString* query2 = @"has.app_id WHERE has.user_id = '";
+    NSString* query1 = @"SELECT app.*, IFNULL(SUM(likes.likes_rate),0) AS ";
+    NSString* query2 = @"likes_rate_total FROM app LEFT OUTER JOIN likes ON ";
+    NSString* query3 = @"likes.app_id = app.app_id WHERE app.app_id IN (SELECT";
+    NSString* query4 = @" has.app_id FROM has WHERE has.user_id = '";
+    NSString* query5 = @"') GROUP BY app_id ORDER BY likes_rate_total DESC";
     NSString* query =
-        [NSString stringWithFormat:@"%@%@%@';",query1, query2, theUserID];
+        [NSString stringWithFormat:@"%@%@%@%@%@%@;",query1, query2, query3,
+                                        query4, theUserID, query5];
     sqlite3_stmt *statement;
     const unsigned char* text;
     NSString* appID;
@@ -89,6 +93,8 @@ static PARSDatabase* _databaseObj;
     NSString* appDesc;
     NSString* appPrice;
     NSString* appIconLink;
+    NSString* appCategory;
+    NSString* likesRate;
     if (sqlite3_prepare_v2(_databaseConnection, [query UTF8String],
                            [query length], &statement, nil) == SQLITE_OK) {
         while (sqlite3_step(statement) == SQLITE_ROW) {            
@@ -128,13 +134,118 @@ static PARSDatabase* _databaseObj;
                                                  encoding:NSUTF8StringEncoding];
             else
                 appPrice = nil;
+            text = sqlite3_column_text(statement, 6);
+            if (text)
+                appCategory = [NSString stringWithCString:(const char*)text
+                                              encoding:NSUTF8StringEncoding];
+            else
+                appCategory = nil;
+            text = sqlite3_column_text(statement, 7);
+            if (text)
+                likesRate = [NSString stringWithCString:(const char*)text
+                                                 encoding:NSUTF8StringEncoding];
+            else
+                likesRate = nil;
             PARSUserData* theApp =
                 [[PARSUserData alloc] initWithAppID:appID
                                          andAppName:appName
                                     andAppDeveloper:appDeveloper
                                          andAppDesc:appDesc
                                         andAppPrice:appPrice
-                                     andAppIconLink:appIconLink];
+                                     andAppIconLink:appIconLink
+                                     andAppCategory:appCategory
+                                       andLikesRate:likesRate];
+            [appList addObject: theApp];
+        }
+        sqlite3_finalize(statement);
+    }
+    return appList;
+}
+
+- (NSMutableArray*) selectFriendsAppsWithUserID:(NSString*)theUserID
+{
+    NSMutableArray* appList = [[NSMutableArray alloc] init];
+    NSString* query1 = @"SELECT app.*, IFNULL(SUM(likes.likes_rate),0) AS ";
+    NSString* query2 = @"likes_rate_total FROM app LEFT OUTER JOIN likes ON ";
+    NSString* query3 = @"likes.app_id = app.app_id WHERE app.app_id IN (SELECT";
+    NSString* query4 = @" has.app_id FROM has WHERE has.user_id IN (SELECT ";
+    NSString* query5 = @"user_id_b FROM friend WHERE user_id_a = '";
+    NSString* query6 = @"')) GROUP BY app_id ORDER BY likes_rate_total DESC";
+    NSString* query =
+    [NSString stringWithFormat:@"%@%@%@%@%@%@%@",query1, query2, query3,
+                                            query4, query5, theUserID, query6];
+    NSLog(@"%@",query);
+    
+    sqlite3_stmt *statement;
+    const unsigned char* text;
+    NSString* appID;
+    NSString* appName;
+    NSString* appDeveloper;
+    NSString* appDesc;
+    NSString* appPrice;
+    NSString* appIconLink;
+    NSString* appCategory;
+    NSString* likesRate;
+    if (sqlite3_prepare_v2(_databaseConnection, [query UTF8String],
+                           [query length], &statement, nil) == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            text = sqlite3_column_text(statement, 0);
+            if (text)
+                appID = [NSString stringWithCString:(const char*)text
+                                           encoding:NSUTF8StringEncoding];
+            else
+                appID = nil;
+            text = sqlite3_column_text(statement, 1);
+            if (text)
+                appName = [NSString stringWithCString:(const char*)text
+                                             encoding:NSUTF8StringEncoding];
+            else
+                appName = nil;
+            text = sqlite3_column_text(statement, 2);
+            if (text)
+                appDesc = [NSString stringWithCString:(const char*)text
+                                             encoding:NSUTF8StringEncoding];
+            else
+                appDesc = nil;
+            text = sqlite3_column_text(statement, 3);
+            if (text)
+                appIconLink = [NSString stringWithCString:(const char*)text
+                                                 encoding:NSUTF8StringEncoding];
+            else
+                appIconLink = nil;
+            text = sqlite3_column_text(statement, 4);
+            if (text)
+                appDeveloper = [NSString stringWithCString:(const char*)text
+                                                  encoding:NSUTF8StringEncoding];
+            else
+                appDeveloper = nil;
+            text = sqlite3_column_text(statement, 5);
+            if (text)
+                appPrice = [NSString stringWithCString:(const char*)text
+                                              encoding:NSUTF8StringEncoding];
+            else
+                appPrice = nil;
+            text = sqlite3_column_text(statement, 6);
+            if (text)
+                appCategory = [NSString stringWithCString:(const char*)text
+                                                 encoding:NSUTF8StringEncoding];
+            else
+                appCategory = nil;
+            text = sqlite3_column_text(statement, 7);
+            if (text)
+                likesRate = [NSString stringWithCString:(const char*)text
+                                               encoding:NSUTF8StringEncoding];
+            else
+                likesRate = nil;
+            PARSUserData* theApp =
+            [[PARSUserData alloc] initWithAppID:appID
+                                     andAppName:appName
+                                andAppDeveloper:appDeveloper
+                                     andAppDesc:appDesc
+                                    andAppPrice:appPrice
+                                 andAppIconLink:appIconLink
+                                 andAppCategory:appCategory
+                                   andLikesRate:likesRate];
             [appList addObject: theApp];
         }
         sqlite3_finalize(statement);

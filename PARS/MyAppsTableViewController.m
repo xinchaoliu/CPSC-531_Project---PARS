@@ -31,7 +31,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor lightTextColor];
     PARSDatabase* db = [[PARSDatabase alloc] init];
-    appList = [db selectAppsWithUserID:user.user_id];
+    appList = [db selectMyAppsWithUserID:user.user_id];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,7 +59,7 @@
     AppCell *cell =
         [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    PARSUserData* myApps = [appList objectAtIndex:indexPath.row];    
+    PARSUserData* myApps = [appList objectAtIndex:indexPath.row];
     cell.appIcon = [UIImage imageWithData:
                     [NSData dataWithContentsOfURL:
                      [NSURL URLWithString: myApps.app_icon_link]]];

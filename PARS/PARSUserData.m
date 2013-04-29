@@ -18,6 +18,8 @@
 @synthesize app_desc;
 @synthesize app_price;
 @synthesize app_icon_link;
+@synthesize app_category;
+@synthesize likes_rate;
 
 - (id) initWithUserID:(NSString*)theUserID
           andUserName:(NSString*)theUserName
@@ -36,6 +38,8 @@
           andAppDesc:(NSString*)theAppDesc
          andAppPrice:(NSString*)theAppPrice
       andAppIconLink:(NSString*)theAppIconLink
+      andAppCategory:(NSString*)theAppCategory
+        andLikesRate:(NSString*)theLikesRate
 {
     self = [super init];
     if (self) {
@@ -45,6 +49,8 @@
         app_desc = theAppDesc;
         app_price = theAppPrice;
         app_icon_link = theAppIconLink;
+        app_category = theAppCategory;
+        likes_rate = theLikesRate;
     }
     return self;
 }

@@ -31,7 +31,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor lightTextColor];
     PARSDatabase* db = [[PARSDatabase alloc] init];
-    appList = [db selectAppsWithUserID:user.user_id];
+    appList = [db selectFriendsAppsWithUserID:user.user_id];
 }
 
 - (void)didReceiveMemoryWarning

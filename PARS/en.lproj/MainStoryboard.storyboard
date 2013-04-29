@@ -523,54 +523,6 @@
             <point key="canvasLocation" x="1053" y="38"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AccountViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="signoutButtonPressed:"/>
-                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
-            </relationships>
-        </class>
-        <class className="AppCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="appNameLabelInCell" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="developerLabelInCell" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconImageInCell" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="priceLabelInCell" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FriendsAppsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsAppsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButtonPressed:"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="signinButtonPressed:"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MyAppsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyAppsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButtonPressed:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="PARSAppsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PARSAppsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButtonPressed:"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSString* app_desc;
 @property (strong, nonatomic) NSString* app_price;
 @property (strong, nonatomic) NSString* app_icon_link;
+@property (strong, nonatomic) NSString* app_category;
+@property (strong, nonatomic) NSString* likes_rate;
 
 - (id) initWithUserID:(NSString*)theUserID
           andUserName:(NSString*)theUserName;
@@ -28,8 +30,8 @@
      andAppDeveloper:(NSString*)theAppDeveloper
           andAppDesc:(NSString*)theAppDesc
          andAppPrice:(NSString*)theAppPrice
-      andAppIconLink:(NSString*)theAppIconLink;
-
-
+      andAppIconLink:(NSString*)theAppIconLink
+      andAppCategory:(NSString*)theAppCategory
+        andLikesRate:(NSString*)theLikesRate;
 
 @end
