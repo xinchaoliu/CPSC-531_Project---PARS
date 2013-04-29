@@ -13,6 +13,23 @@
 @property (strong, nonatomic) NSString* user_id;
 @property (strong, nonatomic) NSString* user_name;
 
-- (id) initWithUserID:(NSString*)theUserID andUserName:(NSString*)theUserName;
+@property (strong, nonatomic) NSString* app_id;
+@property (strong, nonatomic) NSString* app_name;
+@property (strong, nonatomic) NSString* app_developer;
+@property (strong, nonatomic) NSString* app_desc;
+@property (strong, nonatomic) NSString* app_price;
+@property (strong, nonatomic) NSString* app_icon_link;
+
+- (id) initWithUserID:(NSString*)theUserID
+          andUserName:(NSString*)theUserName;
+
+- (id) initWithAppID:(NSString*)theAppID
+          andAppName:(NSString*)theAppName
+     andAppDeveloper:(NSString*)theAppDeveloper
+          andAppDesc:(NSString*)theAppDesc
+         andAppPrice:(NSString*)theAppPrice
+      andAppIconLink:(NSString*)theAppIconLink;
+
+
 
 @end

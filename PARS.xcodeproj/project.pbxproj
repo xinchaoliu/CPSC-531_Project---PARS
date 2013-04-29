@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		028C83C5172D0409001588C2 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 028C83C4172D0409001588C2 /* TabBarController.m */; };
-		028C83C7172D04C6001588C2 /* PARS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 028C83C6172D04C6001588C2 /* PARS.sqlite */; };
+		0280C87D172E6060009B652B /* PARS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0280C87C172E6060009B652B /* PARS.sqlite */; };
+		028C83CA172D84BA001588C2 /* AppCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 028C83C9172D84BA001588C2 /* AppCell.m */; };
+		028C83CD172D8A40001588C2 /* MyAppsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 028C83CC172D8A40001588C2 /* MyAppsTableViewController.m */; };
 		029291E0172C7DA9000E866B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029291DF172C7DA9000E866B /* UIKit.framework */; };
 		029291E2172C7DA9000E866B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029291E1172C7DA9000E866B /* Foundation.framework */; };
 		029291E4172C7DA9000E866B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029291E3172C7DA9000E866B /* CoreGraphics.framework */; };
@@ -22,14 +23,15 @@
 		02929204172C7DDA000E866B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02929203172C7DDA000E866B /* LoginViewController.m */; };
 		02929207172C895E000E866B /* PARSDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 02929206172C895E000E866B /* PARSDatabase.m */; };
 		02929210172CF259000E866B /* PARSUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0292920F172CF259000E866B /* PARSUserData.m */; };
-		02929213172CF8C5000E866B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02929208172C8977000E866B /* libsqlite3.dylib */; };
 		02929215172CF8E0000E866B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02929214172CF8E0000E866B /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		028C83C3172D0409001588C2 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
-		028C83C4172D0409001588C2 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
-		028C83C6172D04C6001588C2 /* PARS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = PARS.sqlite; sourceTree = "<group>"; };
+		0280C87C172E6060009B652B /* PARS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = PARS.sqlite; sourceTree = "<group>"; };
+		028C83C8172D84BA001588C2 /* AppCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCell.h; sourceTree = "<group>"; };
+		028C83C9172D84BA001588C2 /* AppCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCell.m; sourceTree = "<group>"; };
+		028C83CB172D8A40001588C2 /* MyAppsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppsTableViewController.h; sourceTree = "<group>"; };
+		028C83CC172D8A40001588C2 /* MyAppsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppsTableViewController.m; sourceTree = "<group>"; };
 		029291DC172C7DA9000E866B /* PARS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PARS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		029291DF172C7DA9000E866B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		029291E1172C7DA9000E866B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -48,7 +50,6 @@
 		02929203172C7DDA000E866B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		02929205172C895E000E866B /* PARSDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARSDatabase.h; sourceTree = "<group>"; };
 		02929206172C895E000E866B /* PARSDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PARSDatabase.m; sourceTree = "<group>"; };
-		02929208172C8977000E866B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		0292920E172CF259000E866B /* PARSUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARSUserData.h; sourceTree = "<group>"; };
 		0292920F172CF259000E866B /* PARSUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PARSUserData.m; sourceTree = "<group>"; };
 		02929214172CF8E0000E866B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -59,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02929213172CF8C5000E866B /* libsqlite3.dylib in Frameworks */,
 				029291E0172C7DA9000E866B /* UIKit.framework in Frameworks */,
 				029291E2172C7DA9000E866B /* Foundation.framework in Frameworks */,
 				029291E4172C7DA9000E866B /* CoreGraphics.framework in Frameworks */,
@@ -73,7 +73,6 @@
 		029291D3172C7DA9000E866B = {
 			isa = PBXGroup;
 			children = (
-				02929208172C8977000E866B /* libsqlite3.dylib */,
 				029291E5172C7DA9000E866B /* PARS */,
 				029291DE172C7DA9000E866B /* Frameworks */,
 				029291DD172C7DA9000E866B /* Products */,
@@ -107,8 +106,10 @@
 				029291F7172C7DA9000E866B /* MainStoryboard.storyboard */,
 				02929202172C7DDA000E866B /* LoginViewController.h */,
 				02929203172C7DDA000E866B /* LoginViewController.m */,
-				028C83C3172D0409001588C2 /* TabBarController.h */,
-				028C83C4172D0409001588C2 /* TabBarController.m */,
+				028C83C8172D84BA001588C2 /* AppCell.h */,
+				028C83C9172D84BA001588C2 /* AppCell.m */,
+				028C83CB172D8A40001588C2 /* MyAppsTableViewController.h */,
+				028C83CC172D8A40001588C2 /* MyAppsTableViewController.m */,
 				02929205172C895E000E866B /* PARSDatabase.h */,
 				02929206172C895E000E866B /* PARSDatabase.m */,
 				0292920E172CF259000E866B /* PARSUserData.h */,
@@ -121,7 +122,7 @@
 		029291E6172C7DA9000E866B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				028C83C6172D04C6001588C2 /* PARS.sqlite */,
+				0280C87C172E6060009B652B /* PARS.sqlite */,
 				029291E7172C7DA9000E866B /* PARS-Info.plist */,
 				029291E8172C7DA9000E866B /* InfoPlist.strings */,
 				029291EB172C7DA9000E866B /* main.m */,
@@ -189,7 +190,7 @@
 				029291F4172C7DA9000E866B /* Default@2x.png in Resources */,
 				029291F6172C7DA9000E866B /* Default-568h@2x.png in Resources */,
 				029291F9172C7DA9000E866B /* MainStoryboard.storyboard in Resources */,
-				028C83C7172D04C6001588C2 /* PARS.sqlite in Resources */,
+				0280C87D172E6060009B652B /* PARS.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +206,8 @@
 				02929204172C7DDA000E866B /* LoginViewController.m in Sources */,
 				02929207172C895E000E866B /* PARSDatabase.m in Sources */,
 				02929210172CF259000E866B /* PARSUserData.m in Sources */,
-				028C83C5172D0409001588C2 /* TabBarController.m in Sources */,
+				028C83CA172D84BA001588C2 /* AppCell.m in Sources */,
+				028C83CD172D8A40001588C2 /* MyAppsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

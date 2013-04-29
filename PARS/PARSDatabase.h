@@ -17,7 +17,9 @@
 
 + (PARSDatabase*) db;
 
-- (NSArray*) selectUserWithEmail:(NSString*)theEmail
+- (NSMutableArray*) selectUserWithEmail:(NSString*)theEmail
                      andPassword:(NSString*)thePassword;
+
+- (NSMutableArray*) selectAppsWithUserID:(NSString*)theUserID;
 
 @end

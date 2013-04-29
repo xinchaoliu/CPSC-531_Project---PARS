@@ -74,4 +74,72 @@ static PARSDatabase* _databaseObj;
     return login;
 }
 
+- (NSMutableArray*) selectAppsWithUserID:(NSString*)theUserID
+{
+    NSMutableArray* appList = [[NSMutableArray alloc] init];
+    NSString* query1 = @"SELECT * FROM app INNER JOIN has ON app.app_id = ";
+    NSString* query2 = @"has.app_id WHERE has.user_id = '";
+    NSString* query =
+        [NSString stringWithFormat:@"%@%@%@';",query1, query2, theUserID];
+    sqlite3_stmt *statement;
+    const unsigned char* text;
+    NSString* appID;
+    NSString* appName;
+    NSString* appDeveloper;
+    NSString* appDesc;
+    NSString* appPrice;
+    NSString* appIconLink;
+    if (sqlite3_prepare_v2(_databaseConnection, [query UTF8String],
+                           [query length], &statement, nil) == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {            
+            text = sqlite3_column_text(statement, 0);
+            if (text)
+                appID = [NSString stringWithCString:(const char*)text
+                                           encoding:NSUTF8StringEncoding];
+            else
+                appID = nil;
+            text = sqlite3_column_text(statement, 1);
+            if (text)
+                appName = [NSString stringWithCString:(const char*)text
+                                             encoding:NSUTF8StringEncoding];
+            else
+                appName = nil;
+            text = sqlite3_column_text(statement, 2);
+            if (text)
+                appDesc = [NSString stringWithCString:(const char*)text
+                                             encoding:NSUTF8StringEncoding];
+            else
+                appDesc = nil;
+            text = sqlite3_column_text(statement, 3);
+            if (text)
+                appIconLink = [NSString stringWithCString:(const char*)text
+                                                 encoding:NSUTF8StringEncoding];
+            else
+                appIconLink = nil;
+            text = sqlite3_column_text(statement, 4);
+            if (text)
+                appDeveloper = [NSString stringWithCString:(const char*)text
+                                                 encoding:NSUTF8StringEncoding];
+            else
+                appDeveloper = nil;
+            text = sqlite3_column_text(statement, 5);
+            if (text)
+                appPrice = [NSString stringWithCString:(const char*)text
+                                                 encoding:NSUTF8StringEncoding];
+            else
+                appPrice = nil;
+            PARSUserData* theApp =
+                [[PARSUserData alloc] initWithAppID:appID
+                                         andAppName:appName
+                                    andAppDeveloper:appDeveloper
+                                         andAppDesc:appDesc
+                                        andAppPrice:appPrice
+                                     andAppIconLink:appIconLink];
+            [appList addObject: theApp];
+        }
+        sqlite3_finalize(statement);
+    }
+    return appList;
+}
+
 @end

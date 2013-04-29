@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "MyAppsTableViewController.h"
 
 @interface LoginViewController ()
 
@@ -15,6 +16,7 @@
 @implementation LoginViewController
 
 @synthesize login;
+@synthesize userID;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -51,6 +53,7 @@
     PARSUserData* user = [self.login objectAtIndex: 0];
     if (user.user_id != nil)
     {
+        userID = user.user_id;
         self.navBar.topItem.title =
             [NSString stringWithFormat:@"Welcome, %@",user.user_name];
         [self performSegueWithIdentifier:@"login" sender:self];
@@ -58,4 +61,11 @@
     else
         self.navBar.topItem.title = @"Wrong Password";
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    MyAppsTableViewController* vc = segue.destinationViewController;
+    NSLog(@"%@",userID);
+    vc.userID = userID;
+}
+
 @end
