@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "MyAppsTableViewController.h"
+#import "AccountViewController.h"
 
 @interface LoginViewController ()
 
@@ -16,7 +16,7 @@
 @implementation LoginViewController
 
 @synthesize login;
-@synthesize userID;
+@synthesize user;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -50,22 +50,21 @@
     self.login =
         [[PARSDatabase db] selectUserWithEmail:self.emailTextField.text
                                    andPassword:self.passwordTextField.text];
-    PARSUserData* user = [self.login objectAtIndex: 0];
+    self.user = [self.login objectAtIndex: 0];
     if (user.user_id != nil)
     {
-        userID = user.user_id;
-        self.navBar.topItem.title =
-            [NSString stringWithFormat:@"Welcome, %@",user.user_name];
         [self performSegueWithIdentifier:@"login" sender:self];
+        self.emailTextField.text = nil;
+        self.passwordTextField.text = nil;
+        self.navBar.topItem.title = @"PARS Demo";
     }
     else
         self.navBar.topItem.title = @"Wrong Password";
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    MyAppsTableViewController* vc = segue.destinationViewController;
-    NSLog(@"%@",userID);
-    vc.userID = userID;
+    AccountViewController* vc = segue.destinationViewController;
+    vc.user = self.user;
 }
 
 @end

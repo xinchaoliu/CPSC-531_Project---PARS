@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (strong, nonatomic) NSArray* login;
-@property (strong, nonatomic) NSString* userID;
+@property (strong, nonatomic) PARSUserData* user;
 
 - (IBAction)signinButtonPressed:(id)sender;
 
