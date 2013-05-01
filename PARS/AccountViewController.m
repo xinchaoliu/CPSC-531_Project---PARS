@@ -7,7 +7,6 @@
 //
 
 #import "AccountViewController.h"
-#import "MyAppsTableViewController.h"
 
 @interface AccountViewController ()
 
@@ -16,6 +15,8 @@
 @implementation AccountViewController
 
 @synthesize user;
+@synthesize appList;
+@synthesize appListNavBarTitle;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -43,15 +44,57 @@
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    MyAppsTableViewController* vc = segue.destinationViewController;
-    vc.user = self.user;
-}
-
 - (void)tableView:(UITableView *)tableView
         didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];    
+    switch (indexPath.section) {
+        case 0:
+        {
+            appListNavBarTitle = @"My Apps";
+            PARSDatabase* db = [[PARSDatabase alloc] init];
+            appList = [db selectMyAppsWithUserID:user.user_id];
+            break;
+        }
+        case 1:
+        {
+            appListNavBarTitle = @"Our Recommendations";
+            PARSDatabase* db = [[PARSDatabase alloc] init];
+            appList = [db selectMyAppsWithUserID:user.user_id];
+            break;
+        }
+        case 2:
+        {
+            appListNavBarTitle = @"Friends Like";
+            PARSDatabase* db = [[PARSDatabase alloc] init];
+            appList = [db getFriendsAppListWithUserID:user.user_id];
+            break;
+        }
+        default:
+            break;
+    }
+    [self performSegueWithIdentifier:@"appList" sender:self];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    PARSAppsTableViewController* vc = segue.destinationViewController;
+    vc.navBarTitle = appListNavBarTitle;
+    vc.appList = appList;
+}
+
+
+/*
+ - (void)tableView:(UITableView *)tableView
+ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ selectedApp = [appList objectAtIndex:indexPath.row];
+ [self performSegueWithIdentifier:@"appDetail" sender:self];
+ }
+ 
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ AppDetailViewController* vc = segue.destinationViewController;
+ vc.appDetail = self.selectedApp;
+ }
+ 
+ */
 @end

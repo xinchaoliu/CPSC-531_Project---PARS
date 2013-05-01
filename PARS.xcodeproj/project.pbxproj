@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0280C883172E6B73009B652B /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0280C882172E6B73009B652B /* AccountViewController.m */; };
-		0280C886172E873D009B652B /* FriendsAppsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0280C885172E873D009B652B /* FriendsAppsTableViewController.m */; };
 		0280C889172E88B3009B652B /* PARSAppsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0280C888172E88B3009B652B /* PARSAppsTableViewController.m */; };
 		028C83CA172D84BA001588C2 /* AppCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 028C83C9172D84BA001588C2 /* AppCell.m */; };
-		028C83CD172D8A40001588C2 /* MyAppsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 028C83CC172D8A40001588C2 /* MyAppsTableViewController.m */; };
 		029291E0172C7DA9000E866B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029291DF172C7DA9000E866B /* UIKit.framework */; };
 		029291E2172C7DA9000E866B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029291E1172C7DA9000E866B /* Foundation.framework */; };
 		029291E4172C7DA9000E866B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029291E3172C7DA9000E866B /* CoreGraphics.framework */; };
@@ -33,14 +31,10 @@
 /* Begin PBXFileReference section */
 		0280C881172E6B73009B652B /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		0280C882172E6B73009B652B /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
-		0280C884172E873D009B652B /* FriendsAppsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsAppsTableViewController.h; sourceTree = "<group>"; };
-		0280C885172E873D009B652B /* FriendsAppsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsAppsTableViewController.m; sourceTree = "<group>"; };
 		0280C887172E88B2009B652B /* PARSAppsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARSAppsTableViewController.h; sourceTree = "<group>"; };
 		0280C888172E88B3009B652B /* PARSAppsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PARSAppsTableViewController.m; sourceTree = "<group>"; };
 		028C83C8172D84BA001588C2 /* AppCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCell.h; sourceTree = "<group>"; };
 		028C83C9172D84BA001588C2 /* AppCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCell.m; sourceTree = "<group>"; };
-		028C83CB172D8A40001588C2 /* MyAppsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppsTableViewController.h; sourceTree = "<group>"; };
-		028C83CC172D8A40001588C2 /* MyAppsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppsTableViewController.m; sourceTree = "<group>"; };
 		029291DC172C7DA9000E866B /* PARS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PARS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		029291DF172C7DA9000E866B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		029291E1172C7DA9000E866B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -122,10 +116,6 @@
 				0280C882172E6B73009B652B /* AccountViewController.m */,
 				028C83C8172D84BA001588C2 /* AppCell.h */,
 				028C83C9172D84BA001588C2 /* AppCell.m */,
-				028C83CB172D8A40001588C2 /* MyAppsTableViewController.h */,
-				028C83CC172D8A40001588C2 /* MyAppsTableViewController.m */,
-				0280C884172E873D009B652B /* FriendsAppsTableViewController.h */,
-				0280C885172E873D009B652B /* FriendsAppsTableViewController.m */,
 				0280C887172E88B2009B652B /* PARSAppsTableViewController.h */,
 				0280C888172E88B3009B652B /* PARSAppsTableViewController.m */,
 				02E06866173130140046F0DD /* AppDetailViewController.h */,
@@ -227,9 +217,7 @@
 				02929207172C895E000E866B /* PARSDatabase.m in Sources */,
 				02929210172CF259000E866B /* PARSUserData.m in Sources */,
 				028C83CA172D84BA001588C2 /* AppCell.m in Sources */,
-				028C83CD172D8A40001588C2 /* MyAppsTableViewController.m in Sources */,
 				0280C883172E6B73009B652B /* AccountViewController.m in Sources */,
-				0280C886172E873D009B652B /* FriendsAppsTableViewController.m in Sources */,
 				0280C889172E88B3009B652B /* PARSAppsTableViewController.m in Sources */,
 				02E06868173130140046F0DD /* AppDetailViewController.m in Sources */,
 			);

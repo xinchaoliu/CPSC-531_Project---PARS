@@ -17,6 +17,8 @@
 @property (strong, nonatomic) NSMutableArray* appList;
 @property (strong, nonatomic) PARSUserData* user;
 @property (strong, nonatomic) PARSUserData* selectedApp;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
+@property (strong, nonatomic) NSString* navBarTitle;
 
 - (IBAction)backButtonPressed:(id)sender;
 

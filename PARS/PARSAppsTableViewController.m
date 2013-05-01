@@ -18,6 +18,7 @@
 @synthesize appList;
 @synthesize user;
 @synthesize selectedApp;
+@synthesize navBarTitle;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,9 +32,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor lightTextColor];
-    PARSDatabase* db = [[PARSDatabase alloc] init];
-    appList = [db selectMyAppsWithUserID:user.user_id];
+    self.view.backgroundColor = [UIColor lightTextColor];    
+    self.navBar.topItem.title = navBarTitle;
 }
 
 - (void)didReceiveMemoryWarning

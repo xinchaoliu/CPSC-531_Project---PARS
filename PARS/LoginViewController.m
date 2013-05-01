@@ -53,7 +53,7 @@
     self.user = [self.login objectAtIndex: 0];
     if (user.user_id != nil)
     {
-        [self performSegueWithIdentifier:@"login" sender:self];
+        [self performSegueWithIdentifier:@"signIn" sender:self];
         self.emailTextField.text = nil;
         self.passwordTextField.text = nil;
         self.navBar.topItem.title = @"PARS Demo";
