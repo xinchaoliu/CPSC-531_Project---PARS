@@ -10,11 +10,13 @@
 #import "AppCell.h"
 #import "PARSDatabase.h"
 #import "PARSUserData.h"
+#import "AppDetailViewController.h"
 
 @interface FriendsAppsTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray* appList;
 @property (strong, nonatomic) PARSUserData* user;
+@property (strong, nonatomic) PARSUserData* selectedApp;
 
 - (IBAction)backButtonPressed:(id)sender;
 

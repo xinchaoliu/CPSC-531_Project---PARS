@@ -27,6 +27,7 @@
 		02929207172C895E000E866B /* PARSDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 02929206172C895E000E866B /* PARSDatabase.m */; };
 		02929210172CF259000E866B /* PARSUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0292920F172CF259000E866B /* PARSUserData.m */; };
 		02929215172CF8E0000E866B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02929214172CF8E0000E866B /* libsqlite3.dylib */; };
+		02E06868173130140046F0DD /* AppDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E06867173130140046F0DD /* AppDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,8 @@
 		0292920E172CF259000E866B /* PARSUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARSUserData.h; sourceTree = "<group>"; };
 		0292920F172CF259000E866B /* PARSUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PARSUserData.m; sourceTree = "<group>"; };
 		02929214172CF8E0000E866B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		02E06866173130140046F0DD /* AppDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDetailViewController.h; sourceTree = "<group>"; };
+		02E06867173130140046F0DD /* AppDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,8 @@
 				0280C885172E873D009B652B /* FriendsAppsTableViewController.m */,
 				0280C887172E88B2009B652B /* PARSAppsTableViewController.h */,
 				0280C888172E88B3009B652B /* PARSAppsTableViewController.m */,
+				02E06866173130140046F0DD /* AppDetailViewController.h */,
+				02E06867173130140046F0DD /* AppDetailViewController.m */,
 				02929205172C895E000E866B /* PARSDatabase.h */,
 				02929206172C895E000E866B /* PARSDatabase.m */,
 				0292920E172CF259000E866B /* PARSUserData.h */,
@@ -226,6 +231,7 @@
 				0280C883172E6B73009B652B /* AccountViewController.m in Sources */,
 				0280C886172E873D009B652B /* FriendsAppsTableViewController.m in Sources */,
 				0280C889172E88B3009B652B /* PARSAppsTableViewController.m in Sources */,
+				02E06868173130140046F0DD /* AppDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +269,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -278,6 +285,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -294,7 +302,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xinchao Liu (WN9G4N2QA8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos6.1]" = "iPhone Developer: Xinchao Liu (WN9G4N2QA8)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -302,6 +311,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos6.1]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

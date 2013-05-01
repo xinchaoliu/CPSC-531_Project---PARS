@@ -174,8 +174,6 @@ static PARSDatabase* _databaseObj;
     NSString* query =
     [NSString stringWithFormat:@"%@%@%@%@%@%@%@",query1, query2, query3,
                                             query4, query5, theUserID, query6];
-    NSLog(@"%@",query);
-    
     sqlite3_stmt *statement;
     const unsigned char* text;
     NSString* appID;
