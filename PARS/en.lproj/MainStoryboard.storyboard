@@ -143,7 +143,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Our Recommendations" id="lQX-e6-anp">
+                            <tableViewSection headerTitle="PARS Recommendations" id="lQX-e6-anp">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1ap-NE-2Yh">
                                         <rect key="frame" x="0.0" y="172" width="320" height="46"/>
@@ -152,7 +152,7 @@
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PARS Recommendations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSZ-hd-Hoi">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Recommendations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSZ-hd-Hoi">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="Fpi-T5-47i"/>
                                                         <constraint firstAttribute="height" constant="43" id="IXl-WE-wXH"/>
@@ -171,7 +171,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="From My Friends" id="FV3-20-qzE">
+                            <tableViewSection headerTitle="From my friends" id="FV3-20-qzE">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2Np-XU-Md1">
                                         <rect key="frame" x="0.0" y="264" width="320" height="46"/>
@@ -339,7 +339,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SdA-iw-iG0">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SdA-iw-iG0">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="contentInset" minX="0.0" minY="44" maxX="0.0" maxY="44"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -356,28 +356,16 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="9tE-Dw-Xw8">
-                                <items>
-                                    <barButtonItem title="Back" id="ole-5q-ceY">
-                                        <connections>
-                                            <action selector="backButtonPressed:" destination="iDU-PC-rUV" id="qn4-Na-3ap"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9tE-Dw-Xw8" firstAttribute="leading" secondItem="fNL-DN-aWa" secondAttribute="leading" type="default" id="0z9-f8-ebu"/>
                             <constraint firstItem="HGc-Iu-CkD" firstAttribute="trailing" secondItem="fNL-DN-aWa" secondAttribute="trailing" type="default" id="47C-eD-Yac"/>
                             <constraint firstItem="SdA-iw-iG0" firstAttribute="trailing" secondItem="fNL-DN-aWa" secondAttribute="trailing" type="default" id="4N2-Bz-CgB"/>
                             <constraint firstItem="HGc-Iu-CkD" firstAttribute="leading" secondItem="fNL-DN-aWa" secondAttribute="leading" type="default" id="J4g-Tu-fZa"/>
                             <constraint firstItem="HGc-Iu-CkD" firstAttribute="top" secondItem="fNL-DN-aWa" secondAttribute="top" type="default" id="KBL-C5-1qR"/>
                             <constraint firstItem="SdA-iw-iG0" firstAttribute="leading" secondItem="fNL-DN-aWa" secondAttribute="leading" type="default" id="XYz-hg-U4X"/>
                             <constraint firstItem="SdA-iw-iG0" firstAttribute="top" secondItem="HGc-Iu-CkD" secondAttribute="bottom" type="default" id="dIa-ic-o3V"/>
-                            <constraint firstItem="9tE-Dw-Xw8" firstAttribute="bottom" secondItem="fNL-DN-aWa" secondAttribute="bottom" type="default" id="qPP-Mr-QE3"/>
-                            <constraint firstItem="9tE-Dw-Xw8" firstAttribute="top" secondItem="SdA-iw-iG0" secondAttribute="bottom" type="default" id="siT-VN-f8v"/>
-                            <constraint firstItem="9tE-Dw-Xw8" firstAttribute="trailing" secondItem="fNL-DN-aWa" secondAttribute="trailing" type="default" id="zmY-ur-crC"/>
+                            <constraint firstItem="SdA-iw-iG0" firstAttribute="bottom" secondItem="fNL-DN-aWa" secondAttribute="bottom" type="default" id="ybj-yY-30a"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cYh-qq-cLp"/>
@@ -390,52 +378,6 @@
             <point key="canvasLocation" x="1466" y="38"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AccountViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="signoutButtonPressed:"/>
-                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
-            </relationships>
-        </class>
-        <class className="AppCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="appNameLabelInCell" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="categoryLabelInCell" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="developerLabelInCell" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconImageInCell" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="priceLabelInCell" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="AppDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButtonPressed:"/>
-                <relationship kind="outlet" name="detailTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="signinButtonPressed:"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="PARSAppsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PARSAppsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButtonPressed:"/>
-                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -19,8 +19,9 @@
 
 - (NSMutableArray*) selectUserWithEmail:(NSString*)theEmail
                      andPassword:(NSString*)thePassword;
-- (NSMutableArray*) selectMyAppsWithUserID:(NSString*)theUserID;
+- (NSMutableArray*) getMyAppListWithUserID:(NSString*)theUserID;
 - (NSMutableArray*) getFriendsAppListWithUserID:(NSString*)theUserID;
+- (NSMutableArray*) getPARSAppListWithUserID:(NSString*)theUserID;
 
 
 @end

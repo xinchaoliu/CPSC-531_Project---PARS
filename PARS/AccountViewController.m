@@ -53,14 +53,14 @@
         {
             appListNavBarTitle = @"My Apps";
             PARSDatabase* db = [[PARSDatabase alloc] init];
-            appList = [db selectMyAppsWithUserID:user.user_id];
+            appList = [db getMyAppListWithUserID:user.user_id];
             break;
         }
         case 1:
         {
             appListNavBarTitle = @"Our Recommendations";
             PARSDatabase* db = [[PARSDatabase alloc] init];
-            appList = [db selectMyAppsWithUserID:user.user_id];
+            appList = [db getPARSAppListWithUserID:user.user_id];
             break;
         }
         case 2:
@@ -82,19 +82,4 @@
     vc.appList = appList;
 }
 
-
-/*
- - (void)tableView:(UITableView *)tableView
- didSelectRowAtIndexPath:(NSIndexPath *)indexPath
- {
- selectedApp = [appList objectAtIndex:indexPath.row];
- [self performSegueWithIdentifier:@"appDetail" sender:self];
- }
- 
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- AppDetailViewController* vc = segue.destinationViewController;
- vc.appDetail = self.selectedApp;
- }
- 
- */
 @end

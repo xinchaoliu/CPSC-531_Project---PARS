@@ -74,17 +74,13 @@ static PARSDatabase* _databaseObj;
     return login;
 }
 
-- (NSMutableArray*) selectMyAppsWithUserID:(NSString*)theUserID
+- (NSMutableArray*) getMyAppListWithUserID:(NSString*)theUserID
 {
+    // SELECT app.*, IFNULL(SUM(likes.likes_rate),0) AS total_all_likes_rate FROM app LEFT OUTER JOIN likes ON likes.app_id = app.app_id WHERE app.app_id IN (SELECT has.app_id FROM has WHERE has.user_id = '1') GROUP BY app_id ORDER BY likes_rate_total DESC
+    
     NSMutableArray* appList = [[NSMutableArray alloc] init];
-    NSString* query1 = @"SELECT app.*, IFNULL(SUM(likes.likes_rate),0) AS ";
-    NSString* query2 = @"likes_rate_total FROM app LEFT OUTER JOIN likes ON ";
-    NSString* query3 = @"likes.app_id = app.app_id WHERE app.app_id IN (SELECT";
-    NSString* query4 = @" has.app_id FROM has WHERE has.user_id = '";
-    NSString* query5 = @"') GROUP BY app_id ORDER BY likes_rate_total DESC";
     NSString* query =
-        [NSString stringWithFormat:@"%@%@%@%@%@%@;",query1, query2, query3,
-                                        query4, theUserID, query5];
+        [NSString stringWithFormat:@"SELECT app.*, IFNULL(SUM(likes.likes_rate),0) AS total_all_likes_rate FROM app LEFT OUTER JOIN likes ON likes.app_id = app.app_id WHERE app.app_id IN (SELECT has.app_id FROM has WHERE has.user_id = '%@') GROUP BY app_id ORDER BY total_all_likes_rate DESC", theUserID];
     sqlite3_stmt *statement;
     const unsigned char* text;
     NSString* appID;
@@ -118,7 +114,7 @@ static PARSDatabase* _databaseObj;
             text = sqlite3_column_text(statement, 3);
             if (text)
                 appDeveloper = [NSString stringWithCString:(const char*)text
-                                                 encoding:NSUTF8StringEncoding];
+                                                  encoding:NSUTF8StringEncoding];
             else
                 appDeveloper = nil;
             text = sqlite3_column_text(statement, 4);
@@ -130,13 +126,13 @@ static PARSDatabase* _databaseObj;
             text = sqlite3_column_text(statement, 5);
             if (text)
                 appCategory = [NSString stringWithCString:(const char*)text
-                                              encoding:NSUTF8StringEncoding];
+                                                 encoding:NSUTF8StringEncoding];
             else
                 appCategory = nil;
             text = sqlite3_column_text(statement, 6);
             if (text)
                 likesRate = [NSString stringWithCString:(const char*)text
-                                                 encoding:NSUTF8StringEncoding];
+                                               encoding:NSUTF8StringEncoding];
             else
                 likesRate = nil;
             PARSUserData* theApp =
@@ -158,15 +154,84 @@ static PARSDatabase* _databaseObj;
 {
     // SELECT app.*, SUM(likes_rate) AS total_friends_likes_rate FROM likes INNER JOIN app ON app.app_id = likes.app_id WHERE likes.user_id IN (SELECT user_id_b FROM friend WHERE user_id_a = '6') AND likes.app_id NOT IN (SELECT app_id FROM has WHERE user_id = '6') GROUP BY app_id ORDER BY total_friends_likes_rate DESC
     NSMutableArray* appList = [[NSMutableArray alloc] init];
-    NSString* query1 = @"SELECT app.*, IFNULL(SUM(likes.likes_rate),0) AS ";
-    NSString* query2 = @"likes_rate_total FROM app LEFT OUTER JOIN likes ON ";
-    NSString* query3 = @"likes.app_id = app.app_id WHERE app.app_id IN (SELECT";
-    NSString* query4 = @" has.app_id FROM has WHERE has.user_id IN (SELECT ";
-    NSString* query5 = @"user_id_b FROM friend WHERE user_id_a = '";
-    NSString* query6 = @"')) GROUP BY app_id ORDER BY likes_rate_total DESC";
     NSString* query =
-    [NSString stringWithFormat:@"%@%@%@%@%@%@%@",query1, query2, query3,
-                                            query4, query5, theUserID, query6];
+    [NSString stringWithFormat:@"SELECT app.*, SUM(likes_rate) AS total_friends_likes_rate FROM likes INNER JOIN app ON app.app_id = likes.app_id WHERE likes.user_id IN (SELECT user_id_b FROM friend WHERE user_id_a = '%@') AND likes.app_id NOT IN (SELECT app_id FROM has WHERE user_id = '%@') GROUP BY app_id ORDER BY total_friends_likes_rate DESC",theUserID, theUserID];
+    sqlite3_stmt *statement;
+    const unsigned char* text;
+    NSString* appID;
+    NSString* appName;
+    NSString* appDeveloper;
+    NSString* appPrice;
+    NSString* appIconLink;
+    NSString* appCategory;
+    NSString* likesRate;
+    if (sqlite3_prepare_v2(_databaseConnection, [query UTF8String],
+                           [query length], &statement, nil) == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            text = sqlite3_column_text(statement, 0);
+            if (text)
+                appID = [NSString stringWithCString:(const char*)text
+                                           encoding:NSUTF8StringEncoding];
+            else
+                appID = nil;
+            text = sqlite3_column_text(statement, 1);
+            if (text)
+                appName = [NSString stringWithCString:(const char*)text
+                                             encoding:NSUTF8StringEncoding];
+            else
+                appName = nil;
+            text = sqlite3_column_text(statement, 2);
+            if (text)
+                appIconLink = [NSString stringWithCString:(const char*)text
+                                                 encoding:NSUTF8StringEncoding];
+            else
+                appIconLink = nil;
+            text = sqlite3_column_text(statement, 3);
+            if (text)
+                appDeveloper = [NSString stringWithCString:(const char*)text
+                                                  encoding:NSUTF8StringEncoding];
+            else
+                appDeveloper = nil;
+            text = sqlite3_column_text(statement, 4);
+            if (text)
+                appPrice = [NSString stringWithCString:(const char*)text
+                                              encoding:NSUTF8StringEncoding];
+            else
+                appPrice = nil;
+            text = sqlite3_column_text(statement, 5);
+            if (text)
+                appCategory = [NSString stringWithCString:(const char*)text
+                                                 encoding:NSUTF8StringEncoding];
+            else
+                appCategory = nil;
+            text = sqlite3_column_text(statement, 6);
+            if (text)
+                likesRate = [NSString stringWithCString:(const char*)text
+                                               encoding:NSUTF8StringEncoding];
+            else
+                likesRate = nil;
+            PARSUserData* theApp =
+            [[PARSUserData alloc] initWithAppID:appID
+                                     andAppName:appName
+                                andAppDeveloper:appDeveloper
+                                    andAppPrice:appPrice
+                                 andAppIconLink:appIconLink
+                                 andAppCategory:appCategory
+                                   andLikesRate:likesRate];
+            [appList addObject: theApp];
+        }
+        sqlite3_finalize(statement);
+    }
+    return appList;
+}
+
+- (NSMutableArray*) getPARSAppListWithUserID:(NSString*)theUserID
+{
+    // SELECT app.*, IFNULL(SUM(likes_rate),0) AS total_all_likes_rate FROM app LEFT OUTER JOIN likes ON app.app_id = likes.app_id GROUP BY app_id ORDER BY total_all_likes_rate DESC
+    
+    NSMutableArray* appList = [[NSMutableArray alloc] init];
+    NSString* query =
+    [NSString stringWithFormat:@"SELECT app.*, IFNULL(SUM(likes_rate),0) AS total_all_likes_rate FROM app LEFT OUTER JOIN likes ON app.app_id = likes.app_id GROUP BY app_id ORDER BY total_all_likes_rate DESC"];
     sqlite3_stmt *statement;
     const unsigned char* text;
     NSString* appID;
