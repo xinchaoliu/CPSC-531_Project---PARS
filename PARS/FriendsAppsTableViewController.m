@@ -32,7 +32,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor lightTextColor];
     PARSDatabase* db = [[PARSDatabase alloc] init];
-    appList = [db selectFriendsAppsWithUserID:user.user_id];
+    appList = [db getFriendsAppListWithUserID:user.user_id];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,6 +67,7 @@
     cell.appName = myApps.app_name;
     cell.appDeveloper = myApps.app_developer;
     cell.appPrice = myApps.app_price;
+    cell.appCategory = myApps.app_category;
     
     return cell;
 }

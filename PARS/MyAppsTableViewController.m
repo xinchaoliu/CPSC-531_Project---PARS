@@ -67,6 +67,7 @@
     cell.appName = myApps.app_name;
     cell.appDeveloper = myApps.app_developer;
     cell.appPrice = myApps.app_price;
+    cell.appCategory = myApps.app_category;
     
     return cell;
 }

@@ -13,6 +13,7 @@
 @synthesize appName;
 @synthesize appDeveloper;
 @synthesize appPrice;
+@synthesize appCategory;
 @synthesize appIcon;
 
 - (id)initWithStyle:(UITableViewCellStyle)style
@@ -62,6 +63,14 @@
     if (![theAppPrice isEqualToString:appPrice]) {
         appPrice = [theAppPrice copy];
         self.priceLabelInCell.text = appPrice;
+    }
+}
+
+- (void)setAppCategory:(NSString *)theAppCategory
+{
+    if (![theAppCategory isEqualToString:appCategory]) {
+        appCategory = [theAppCategory copy];
+        self.categoryLabelInCell.text = appCategory;
     }
 }
 

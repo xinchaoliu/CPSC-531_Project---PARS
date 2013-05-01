@@ -14,10 +14,12 @@
 @property (copy, nonatomic) NSString* appName;
 @property (copy, nonatomic) NSString* appDeveloper;
 @property (copy, nonatomic) NSString* appPrice;
+@property (copy, nonatomic) NSString* appCategory;
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageInCell;
 @property (weak, nonatomic) IBOutlet UILabel *appNameLabelInCell;
 @property (weak, nonatomic) IBOutlet UILabel *developerLabelInCell;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabelInCell;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabelInCell;
 
 @end

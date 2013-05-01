@@ -90,7 +90,6 @@ static PARSDatabase* _databaseObj;
     NSString* appID;
     NSString* appName;
     NSString* appDeveloper;
-    NSString* appDesc;
     NSString* appPrice;
     NSString* appIconLink;
     NSString* appCategory;
@@ -112,35 +111,29 @@ static PARSDatabase* _databaseObj;
                 appName = nil;
             text = sqlite3_column_text(statement, 2);
             if (text)
-                appDesc = [NSString stringWithCString:(const char*)text
-                                             encoding:NSUTF8StringEncoding];
-            else
-                appDesc = nil;
-            text = sqlite3_column_text(statement, 3);
-            if (text)
                 appIconLink = [NSString stringWithCString:(const char*)text
                                                  encoding:NSUTF8StringEncoding];
             else
                 appIconLink = nil;
-            text = sqlite3_column_text(statement, 4);
+            text = sqlite3_column_text(statement, 3);
             if (text)
                 appDeveloper = [NSString stringWithCString:(const char*)text
                                                  encoding:NSUTF8StringEncoding];
             else
                 appDeveloper = nil;
-            text = sqlite3_column_text(statement, 5);
+            text = sqlite3_column_text(statement, 4);
             if (text)
                 appPrice = [NSString stringWithCString:(const char*)text
                                                  encoding:NSUTF8StringEncoding];
             else
                 appPrice = nil;
-            text = sqlite3_column_text(statement, 6);
+            text = sqlite3_column_text(statement, 5);
             if (text)
                 appCategory = [NSString stringWithCString:(const char*)text
                                               encoding:NSUTF8StringEncoding];
             else
                 appCategory = nil;
-            text = sqlite3_column_text(statement, 7);
+            text = sqlite3_column_text(statement, 6);
             if (text)
                 likesRate = [NSString stringWithCString:(const char*)text
                                                  encoding:NSUTF8StringEncoding];
@@ -150,7 +143,6 @@ static PARSDatabase* _databaseObj;
                 [[PARSUserData alloc] initWithAppID:appID
                                          andAppName:appName
                                     andAppDeveloper:appDeveloper
-                                         andAppDesc:appDesc
                                         andAppPrice:appPrice
                                      andAppIconLink:appIconLink
                                      andAppCategory:appCategory
@@ -162,8 +154,9 @@ static PARSDatabase* _databaseObj;
     return appList;
 }
 
-- (NSMutableArray*) selectFriendsAppsWithUserID:(NSString*)theUserID
+- (NSMutableArray*) getFriendsAppListWithUserID:(NSString*)theUserID
 {
+    // SELECT app.*, SUM(likes_rate) AS total_friends_likes_rate FROM likes INNER JOIN app ON app.app_id = likes.app_id WHERE likes.user_id IN (SELECT user_id_b FROM friend WHERE user_id_a = '6') AND likes.app_id NOT IN (SELECT app_id FROM has WHERE user_id = '6') GROUP BY app_id ORDER BY total_friends_likes_rate DESC
     NSMutableArray* appList = [[NSMutableArray alloc] init];
     NSString* query1 = @"SELECT app.*, IFNULL(SUM(likes.likes_rate),0) AS ";
     NSString* query2 = @"likes_rate_total FROM app LEFT OUTER JOIN likes ON ";
@@ -179,7 +172,6 @@ static PARSDatabase* _databaseObj;
     NSString* appID;
     NSString* appName;
     NSString* appDeveloper;
-    NSString* appDesc;
     NSString* appPrice;
     NSString* appIconLink;
     NSString* appCategory;
@@ -201,35 +193,29 @@ static PARSDatabase* _databaseObj;
                 appName = nil;
             text = sqlite3_column_text(statement, 2);
             if (text)
-                appDesc = [NSString stringWithCString:(const char*)text
-                                             encoding:NSUTF8StringEncoding];
-            else
-                appDesc = nil;
-            text = sqlite3_column_text(statement, 3);
-            if (text)
                 appIconLink = [NSString stringWithCString:(const char*)text
                                                  encoding:NSUTF8StringEncoding];
             else
                 appIconLink = nil;
-            text = sqlite3_column_text(statement, 4);
+            text = sqlite3_column_text(statement, 3);
             if (text)
                 appDeveloper = [NSString stringWithCString:(const char*)text
                                                   encoding:NSUTF8StringEncoding];
             else
                 appDeveloper = nil;
-            text = sqlite3_column_text(statement, 5);
+            text = sqlite3_column_text(statement, 4);
             if (text)
                 appPrice = [NSString stringWithCString:(const char*)text
                                               encoding:NSUTF8StringEncoding];
             else
                 appPrice = nil;
-            text = sqlite3_column_text(statement, 6);
+            text = sqlite3_column_text(statement, 5);
             if (text)
                 appCategory = [NSString stringWithCString:(const char*)text
                                                  encoding:NSUTF8StringEncoding];
             else
                 appCategory = nil;
-            text = sqlite3_column_text(statement, 7);
+            text = sqlite3_column_text(statement, 6);
             if (text)
                 likesRate = [NSString stringWithCString:(const char*)text
                                                encoding:NSUTF8StringEncoding];
@@ -239,7 +225,6 @@ static PARSDatabase* _databaseObj;
             [[PARSUserData alloc] initWithAppID:appID
                                      andAppName:appName
                                 andAppDeveloper:appDeveloper
-                                     andAppDesc:appDesc
                                     andAppPrice:appPrice
                                  andAppIconLink:appIconLink
                                  andAppCategory:appCategory

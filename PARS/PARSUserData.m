@@ -15,7 +15,6 @@
 @synthesize app_id;
 @synthesize app_name;
 @synthesize app_developer;
-@synthesize app_desc;
 @synthesize app_price;
 @synthesize app_icon_link;
 @synthesize app_category;
@@ -35,7 +34,6 @@
 - (id) initWithAppID:(NSString*)theAppID
           andAppName:(NSString*)theAppName
      andAppDeveloper:(NSString*)theAppDeveloper
-          andAppDesc:(NSString*)theAppDesc
          andAppPrice:(NSString*)theAppPrice
       andAppIconLink:(NSString*)theAppIconLink
       andAppCategory:(NSString*)theAppCategory
@@ -46,7 +44,6 @@
         app_id = theAppID;
         app_name = theAppName;
         app_developer = theAppDeveloper;
-        app_desc = theAppDesc;
         app_price = theAppPrice;
         app_icon_link = theAppIconLink;
         app_category = theAppCategory;

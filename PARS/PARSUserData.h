@@ -16,7 +16,6 @@
 @property (strong, nonatomic) NSString* app_id;
 @property (strong, nonatomic) NSString* app_name;
 @property (strong, nonatomic) NSString* app_developer;
-@property (strong, nonatomic) NSString* app_desc;
 @property (strong, nonatomic) NSString* app_price;
 @property (strong, nonatomic) NSString* app_icon_link;
 @property (strong, nonatomic) NSString* app_category;
@@ -28,7 +27,6 @@
 - (id) initWithAppID:(NSString*)theAppID
           andAppName:(NSString*)theAppName
      andAppDeveloper:(NSString*)theAppDeveloper
-          andAppDesc:(NSString*)theAppDesc
          andAppPrice:(NSString*)theAppPrice
       andAppIconLink:(NSString*)theAppIconLink
       andAppCategory:(NSString*)theAppCategory
