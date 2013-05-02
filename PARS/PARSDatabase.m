@@ -227,11 +227,11 @@ static PARSDatabase* _databaseObj;
 
 - (NSMutableArray*) getPARSAppListWithUserID:(NSString*)theUserID
 {
-    // SELECT app.*, IFNULL(SUM(likes_rate),0) AS total_all_likes_rate FROM app LEFT OUTER JOIN likes ON app.app_id = likes.app_id GROUP BY app_id ORDER BY total_all_likes_rate DESC
+    // SELECT app.*, IFNULL(SUM(likes_rate),0) AS total_all_likes_rate FROM app LEFT OUTER JOIN likes ON app.app_id = likes.app_id GROUP BY app_id ORDER BY total_all_likes_rate DESC LIMIT 20
     
     NSMutableArray* appList = [[NSMutableArray alloc] init];
     NSString* query =
-    [NSString stringWithFormat:@"SELECT app.*, IFNULL(SUM(likes_rate),0) AS total_all_likes_rate FROM app LEFT OUTER JOIN likes ON app.app_id = likes.app_id GROUP BY app_id ORDER BY total_all_likes_rate DESC"];
+    [NSString stringWithFormat:@"SELECT app.*, IFNULL(SUM(likes_rate),0) AS total_all_likes_rate FROM app LEFT OUTER JOIN likes ON app.app_id = likes.app_id GROUP BY app_id ORDER BY total_all_likes_rate DESC LIMIT 20"];
     sqlite3_stmt *statement;
     const unsigned char* text;
     NSString* appID;

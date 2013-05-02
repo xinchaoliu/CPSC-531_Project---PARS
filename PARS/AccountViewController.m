@@ -15,6 +15,9 @@
 @implementation AccountViewController
 
 @synthesize user;
+@synthesize myAppList;
+@synthesize parsAppList;
+@synthesize friendsAppList;
 @synthesize appList;
 @synthesize appListNavBarTitle;
 
@@ -32,6 +35,10 @@
     [super viewDidLoad];
     self.navBar.topItem.title =
     [NSString stringWithFormat:@"Welcome, %@",user.user_name];
+    PARSDatabase* db = [[PARSDatabase alloc] init];
+    myAppList = [db getMyAppListWithUserID:user.user_id];
+    parsAppList = [db getPARSAppListWithUserID:user.user_id];
+    friendsAppList = [db getFriendsAppListWithUserID:user.user_id];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,22 +59,19 @@
         case 0:
         {
             appListNavBarTitle = @"My Apps";
-            PARSDatabase* db = [[PARSDatabase alloc] init];
-            appList = [db getMyAppListWithUserID:user.user_id];
+            appList = myAppList;
             break;
         }
         case 1:
         {
             appListNavBarTitle = @"Our Recommendations";
-            PARSDatabase* db = [[PARSDatabase alloc] init];
-            appList = [db getPARSAppListWithUserID:user.user_id];
+            appList = parsAppList;
             break;
         }
         case 2:
         {
             appListNavBarTitle = @"Friends Like";
-            PARSDatabase* db = [[PARSDatabase alloc] init];
-            appList = [db getFriendsAppListWithUserID:user.user_id];
+            appList = friendsAppList;
             break;
         }
         default:

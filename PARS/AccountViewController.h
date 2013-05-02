@@ -16,6 +16,9 @@
 @property (strong, nonatomic) NSString* userID;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (strong, nonatomic) PARSUserData* user;
+@property (strong, nonatomic) NSMutableArray* myAppList;
+@property (strong, nonatomic) NSMutableArray* parsAppList;
+@property (strong, nonatomic) NSMutableArray* friendsAppList;
 @property (strong, nonatomic) NSMutableArray* appList;
 @property (strong, nonatomic) NSString* appListNavBarTitle;
 

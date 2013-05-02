@@ -64,8 +64,14 @@
     
     PARSUserData* myApps = [appList objectAtIndex:indexPath.row];
     cell.appIcon = [UIImage imageWithData:
-                    [NSData dataWithContentsOfURL:
-                     [NSURL URLWithString: myApps.app_icon_link]]];
+                   [NSData dataWithContentsOfURL:
+                    [NSURL URLWithString: myApps.app_icon_link]]];
+    CGSize imageSize = cell.appIcon.size;
+    UIGraphicsBeginImageContext(imageSize);
+    [cell.appIcon drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
+    cell.appIcon = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();    
+
     cell.appName = myApps.app_name;
     cell.appDeveloper = myApps.app_developer;
     cell.appPrice = myApps.app_price;
