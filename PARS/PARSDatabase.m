@@ -152,10 +152,10 @@ static PARSDatabase* _databaseObj;
 
 - (NSMutableArray*) getFriendsAppListWithUserID:(NSString*)theUserID
 {
-    // SELECT app.*, SUM(likes_rate) AS total_friends_likes_rate FROM likes INNER JOIN app ON app.app_id = likes.app_id WHERE likes.user_id IN (SELECT user_id_b FROM friend WHERE user_id_a = '6') AND likes.app_id NOT IN (SELECT app_id FROM has WHERE user_id = '6') GROUP BY app_id ORDER BY total_friends_likes_rate DESC
+    // SELECT app.*, SUM(likes_rate) AS total_friends_likes_rate FROM likes INNER JOIN app ON app.app_id = likes.app_id WHERE likes.user_id IN (SELECT user_id_b FROM friend WHERE user_id_a = '6') AND likes.app_id NOT IN (SELECT app_id FROM has WHERE user_id = '6') GROUP BY app_id ORDER BY total_friends_likes_rate DESC LIMIT 20
     NSMutableArray* appList = [[NSMutableArray alloc] init];
     NSString* query =
-    [NSString stringWithFormat:@"SELECT app.*, SUM(likes_rate) AS total_friends_likes_rate FROM likes INNER JOIN app ON app.app_id = likes.app_id WHERE likes.user_id IN (SELECT user_id_b FROM friend WHERE user_id_a = '%@') AND likes.app_id NOT IN (SELECT app_id FROM has WHERE user_id = '%@') GROUP BY app_id ORDER BY total_friends_likes_rate DESC",theUserID, theUserID];
+    [NSString stringWithFormat:@"SELECT app.*, SUM(likes_rate) AS total_friends_likes_rate FROM likes INNER JOIN app ON app.app_id = likes.app_id WHERE likes.user_id IN (SELECT user_id_b FROM friend WHERE user_id_a = '%@') AND likes.app_id NOT IN (SELECT app_id FROM has WHERE user_id = '%@') GROUP BY app_id ORDER BY total_friends_likes_rate DESC LIMIT 20",theUserID, theUserID];
     sqlite3_stmt *statement;
     const unsigned char* text;
     NSString* appID;
@@ -227,11 +227,15 @@ static PARSDatabase* _databaseObj;
 
 - (NSMutableArray*) getPARSAppListWithUserID:(NSString*)theUserID
 {
-    // SELECT app.*, IFNULL(SUM(likes_rate),0) AS total_all_likes_rate FROM app LEFT OUTER JOIN likes ON app.app_id = likes.app_id GROUP BY app_id ORDER BY total_all_likes_rate DESC LIMIT 20
-    
+    NSString* sUserId = @"";
+    NSArray* similarUserList = [self getSimilarUserWithUserID:theUserID];
+    for(PARSUserData* obj in similarUserList){
+        sUserId = [NSString stringWithFormat:@"%@%@,",sUserId,obj.user_id_s];
+    }
+    NSLog(@"%@",sUserId);
     NSMutableArray* appList = [[NSMutableArray alloc] init];
     NSString* query =
-    [NSString stringWithFormat:@"SELECT app.*, IFNULL(SUM(likes_rate),0) AS total_all_likes_rate FROM app LEFT OUTER JOIN likes ON app.app_id = likes.app_id GROUP BY app_id ORDER BY total_all_likes_rate DESC LIMIT 20"];
+    [NSString stringWithFormat:@"SELECT app.*, SUM(likes_rate) AS total_friends_likes_rate FROM likes INNER JOIN app ON app.app_id = likes.app_id WHERE likes.user_id IN (%@0) AND likes.app_id NOT IN (SELECT app_id FROM has WHERE user_id = '%@') GROUP BY app_id ORDER BY total_friends_likes_rate DESC LIMIT 20",sUserId,theUserID];
     sqlite3_stmt *statement;
     const unsigned char* text;
     NSString* appID;
@@ -300,5 +304,86 @@ static PARSDatabase* _databaseObj;
     }
     return appList;
 }
+
+- (NSMutableArray*) prepareSimilarUserWithUserID:(NSString*)theUserID
+{
+    // SELECT user_id,COUNT(user_id) AS 'similarity' FROM likes WHERE app_id IN (SELECT app_id FROM likes WHERE user_id= '1' AND likes_rate = '-1') AND user_id != '1' AND likes_rate = '-1' GROUP BY user_id UNION SELECT user_id,COUNT(user_id) AS 'similarity' FROM likes WHERE app_id IN (SELECT app_id FROM likes WHERE user_id= '1' AND likes_rate = '1') AND user_id != '1' AND likes_rate = '1' GROUP BY user_id ORDER BY similarity DESC
+    
+    NSMutableArray* userList = [[NSMutableArray alloc] init];
+    NSString* query =
+    [NSString stringWithFormat:@"SELECT user_id,COUNT(user_id) AS 'similarity' FROM likes WHERE app_id IN (SELECT app_id FROM likes WHERE user_id= '%@' AND likes_rate = '-1') AND user_id != '%@' AND likes_rate = '-1' GROUP BY user_id UNION SELECT user_id,COUNT(user_id) AS 'similarity' FROM likes WHERE app_id IN (SELECT app_id FROM likes WHERE user_id= '%@' AND likes_rate = '1') AND user_id != '%@' AND likes_rate = '1' GROUP BY user_id ORDER BY similarity DESC",theUserID,theUserID,theUserID,theUserID];
+    sqlite3_stmt *statement;
+    const unsigned char* text;
+    NSString* userID;
+    NSString* similarity;
+    if (sqlite3_prepare_v2(_databaseConnection, [query UTF8String],
+                           [query length], &statement, nil) == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            text = sqlite3_column_text(statement, 0);
+            if (text)
+                userID = [NSString stringWithCString:(const char*)text
+                                           encoding:NSUTF8StringEncoding];
+            else
+                userID = nil;
+            text = sqlite3_column_text(statement, 1);
+            if (text)
+                similarity = [NSString stringWithCString:(const char*)text
+                                             encoding:NSUTF8StringEncoding];
+            else
+                similarity = nil;
+            PARSUserData* theUser_s =
+            [[PARSUserData alloc] initWithUserID:userID andSimilarity:similarity];
+            [userList addObject: theUser_s];
+        }
+        sqlite3_finalize(statement);
+    }
+    return userList;
+}
+
+- (NSArray*) getSimilarUserWithUserID:(NSString *)theUserID
+{
+    NSArray* a = [self prepareSimilarUserWithUserID:theUserID];
+    for (PARSUserData* obj in a) {
+        NSString* query = [NSString stringWithFormat:@"SELECT COUNT(*) FROM likes WHERE user_id = '%@'",obj.user_id_s];
+        sqlite3_stmt *statement;
+        const unsigned char* text;
+        NSString* fixedSimilarity;
+        if (sqlite3_prepare_v2(_databaseConnection, [query UTF8String],
+                               [query length], &statement, nil) == SQLITE_OK) {
+            sqlite3_step(statement);
+            text = sqlite3_column_text(statement, 0);
+            if (text)
+                fixedSimilarity = [NSString stringWithCString:(const char*)text
+                                            encoding:NSUTF8StringEncoding];
+            else
+                fixedSimilarity = nil;
+        }
+        double s = sqrt([fixedSimilarity doubleValue]);
+        query = [NSString stringWithFormat:@"SELECT COUNT(*) FROM likes WHERE user_id = '%@'",theUserID];
+        NSString* userFixedSimilarity;
+        if (sqlite3_prepare_v2(_databaseConnection, [query UTF8String],
+                               [query length], &statement, nil) == SQLITE_OK) {
+            sqlite3_step(statement);
+            text = sqlite3_column_text(statement, 0);
+            if (text)
+                userFixedSimilarity = [NSString stringWithCString:(const char*)text
+                                                     encoding:NSUTF8StringEncoding];
+            else
+                userFixedSimilarity = nil;
+        }
+        s = s * sqrt([userFixedSimilarity doubleValue]);
+        s = [obj.similarity doubleValue] / s;
+        obj.similarity = [NSString stringWithFormat:@"%f",s];
+    }
+    NSArray* sortedArray;
+    sortedArray = [a sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSString* first = [(PARSUserData*)obj1 similarity];
+        NSString* second = [(PARSUserData*)obj2 similarity];
+        return [second compare:first];
+    }];
+    return sortedArray;
+}
+
+
 
 @end

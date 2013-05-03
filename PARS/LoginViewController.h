@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PARSDatabase.h"
 #import "PARSUserData.h"
+#import "AccountViewController.h"
 
 @interface LoginViewController : UITableViewController
 

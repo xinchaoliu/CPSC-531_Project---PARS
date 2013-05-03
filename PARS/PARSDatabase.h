@@ -22,6 +22,7 @@
 - (NSMutableArray*) getMyAppListWithUserID:(NSString*)theUserID;
 - (NSMutableArray*) getFriendsAppListWithUserID:(NSString*)theUserID;
 - (NSMutableArray*) getPARSAppListWithUserID:(NSString*)theUserID;
-
+- (NSMutableArray*) prepareSimilarUserWithUserID:(NSString*)theUserID;
+- (NSArray*) getSimilarUserWithUserID:(NSString *)theUserID;
 
 @end

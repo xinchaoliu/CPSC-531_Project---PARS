@@ -76,6 +76,7 @@
     cell.appDeveloper = myApps.app_developer;
     cell.appPrice = myApps.app_price;
     cell.appCategory = myApps.app_category;
+    NSLog(@"%@,%@",myApps.app_name,myApps.likes_rate);
     
     return cell;
 }

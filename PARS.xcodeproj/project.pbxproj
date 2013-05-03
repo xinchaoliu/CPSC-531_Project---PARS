@@ -10,7 +10,7 @@
 		0280C883172E6B73009B652B /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0280C882172E6B73009B652B /* AccountViewController.m */; };
 		0280C889172E88B3009B652B /* PARSAppsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0280C888172E88B3009B652B /* PARSAppsTableViewController.m */; };
 		028C83CA172D84BA001588C2 /* AppCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 028C83C9172D84BA001588C2 /* AppCell.m */; };
-		029104B61732F4F600176E26 /* PARS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 029104B51732F4F600176E26 /* PARS.sqlite */; };
+		029104BA173438BB00176E26 /* PARS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 029104B9173438BB00176E26 /* PARS.sqlite */; };
 		029291E0172C7DA9000E866B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029291DF172C7DA9000E866B /* UIKit.framework */; };
 		029291E2172C7DA9000E866B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029291E1172C7DA9000E866B /* Foundation.framework */; };
 		029291E4172C7DA9000E866B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029291E3172C7DA9000E866B /* CoreGraphics.framework */; };
@@ -35,7 +35,7 @@
 		0280C888172E88B3009B652B /* PARSAppsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PARSAppsTableViewController.m; sourceTree = "<group>"; };
 		028C83C8172D84BA001588C2 /* AppCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCell.h; sourceTree = "<group>"; };
 		028C83C9172D84BA001588C2 /* AppCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCell.m; sourceTree = "<group>"; };
-		029104B51732F4F600176E26 /* PARS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = PARS.sqlite; sourceTree = "<group>"; };
+		029104B9173438BB00176E26 /* PARS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = PARS.sqlite; sourceTree = "<group>"; };
 		029291DC172C7DA9000E866B /* PARS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PARS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		029291DF172C7DA9000E866B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		029291E1172C7DA9000E866B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -132,7 +132,7 @@
 		029291E6172C7DA9000E866B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				029104B51732F4F600176E26 /* PARS.sqlite */,
+				029104B9173438BB00176E26 /* PARS.sqlite */,
 				029291E7172C7DA9000E866B /* PARS-Info.plist */,
 				029291E8172C7DA9000E866B /* InfoPlist.strings */,
 				029291EB172C7DA9000E866B /* main.m */,
@@ -200,7 +200,7 @@
 				029291F4172C7DA9000E866B /* Default@2x.png in Resources */,
 				029291F6172C7DA9000E866B /* Default-568h@2x.png in Resources */,
 				029291F9172C7DA9000E866B /* MainStoryboard.storyboard in Resources */,
-				029104B61732F4F600176E26 /* PARS.sqlite in Resources */,
+				029104BA173438BB00176E26 /* PARS.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

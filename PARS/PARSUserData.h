@@ -21,6 +21,9 @@
 @property (strong, nonatomic) NSString* app_category;
 @property (strong, nonatomic) NSString* likes_rate;
 
+@property (strong, nonatomic) NSString* user_id_s;
+@property (strong, nonatomic) NSString* similarity;
+
 - (id) initWithUserID:(NSString*)theUserID
           andUserName:(NSString*)theUserName;
 
@@ -31,5 +34,8 @@
       andAppIconLink:(NSString*)theAppIconLink
       andAppCategory:(NSString*)theAppCategory
         andLikesRate:(NSString*)theLikesRate;
+
+- (id) initWithUserID:(NSString*)theUserID
+        andSimilarity:(NSString*)theSimilarity;
 
 @end

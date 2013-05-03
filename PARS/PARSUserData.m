@@ -19,6 +19,8 @@
 @synthesize app_icon_link;
 @synthesize app_category;
 @synthesize likes_rate;
+@synthesize user_id_s;
+@synthesize similarity;
 
 - (id) initWithUserID:(NSString*)theUserID
           andUserName:(NSString*)theUserName
@@ -48,6 +50,17 @@
         app_icon_link = theAppIconLink;
         app_category = theAppCategory;
         likes_rate = theLikesRate;
+    }
+    return self;
+}
+
+- (id) initWithUserID:(NSString*)theUserID
+        andSimilarity:(NSString*)theSimilarity
+{
+    self = [super init];
+    if (self) {
+        user_id_s = theUserID;
+        similarity = theSimilarity;
     }
     return self;
 }
