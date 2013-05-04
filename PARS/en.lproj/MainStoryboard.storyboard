@@ -114,6 +114,13 @@
                                 </navigationItem>
                             </items>
                         </navigationBar>
+                        <textView key="tableFooterView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="O86-Nm-bAH">
+                            <rect key="frame" x="0.0" y="320" width="320" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                         <sections>
                             <tableViewSection headerTitle="My Apps" id="Ewk-8l-Z9U">
                                 <cells>
@@ -206,6 +213,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="debugTextView" destination="O86-Nm-bAH" id="jLa-vX-5eJ"/>
                         <outlet property="navBar" destination="3Ai-ao-qUW" id="NV7-tG-Zb8"/>
                         <segue destination="dPx-6j-mxj" kind="modal" identifier="appList" modalTransitionStyle="flipHorizontal" id="x9y-oT-fcs"/>
                     </connections>

@@ -5,7 +5,7 @@
 //  Created by Xinchao Liu on 4/29/13.
 //  Copyright (c) 2013 Project. All rights reserved.
 //
-
+extern NSString* debug;
 #import "AccountViewController.h"
 
 @interface AccountViewController ()
@@ -39,6 +39,7 @@
     myAppList = [db getMyAppListWithUserID:user.user_id];
     parsAppList = [db getPARSAppListWithUserID:user.user_id];
     friendsAppList = [db getFriendsAppListWithUserID:user.user_id];
+    self.debugTextView.text = debug;
 }
 
 - (void)didReceiveMemoryWarning

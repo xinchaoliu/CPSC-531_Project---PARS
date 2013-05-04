@@ -5,7 +5,7 @@
 //  Created by Xinchao Liu on 4/27/13.
 //  Copyright (c) 2013 Project. All rights reserved.
 //
-
+extern NSString* debug;
 #import "PARSDatabase.h"
 
 @implementation PARSDatabase
@@ -77,7 +77,6 @@ static PARSDatabase* _databaseObj;
 - (NSMutableArray*) getMyAppListWithUserID:(NSString*)theUserID
 {
     // SELECT app.*, IFNULL(SUM(likes.likes_rate),0) AS total_all_likes_rate FROM app LEFT OUTER JOIN likes ON likes.app_id = app.app_id WHERE app.app_id IN (SELECT has.app_id FROM has WHERE has.user_id = '1') GROUP BY app_id ORDER BY likes_rate_total DESC
-    
     NSMutableArray* appList = [[NSMutableArray alloc] init];
     NSString* query =
         [NSString stringWithFormat:@"SELECT app.*, IFNULL(SUM(likes.likes_rate),0) AS total_all_likes_rate FROM app LEFT OUTER JOIN likes ON likes.app_id = app.app_id WHERE app.app_id IN (SELECT has.app_id FROM has WHERE has.user_id = '%@') GROUP BY app_id ORDER BY total_all_likes_rate DESC", theUserID];
@@ -331,6 +330,7 @@ static PARSDatabase* _databaseObj;
                                              encoding:NSUTF8StringEncoding];
             else
                 similarity = nil;
+            debug = [NSString stringWithFormat:@"%@%@: %@\n",debug,userID,similarity];
             PARSUserData* theUser_s =
             [[PARSUserData alloc] initWithUserID:userID andSimilarity:similarity];
             [userList addObject: theUser_s];
@@ -370,7 +370,7 @@ static PARSDatabase* _databaseObj;
                                                      encoding:NSUTF8StringEncoding];
             else
                 userFixedSimilarity = nil;
-        }
+        }        
         s = s * sqrt([userFixedSimilarity doubleValue]);
         s = [obj.similarity doubleValue] / s;
         obj.similarity = [NSString stringWithFormat:@"%f",s];
@@ -381,6 +381,10 @@ static PARSDatabase* _databaseObj;
         NSString* second = [(PARSUserData*)obj2 similarity];
         return [second compare:first];
     }];
+    for (PARSUserData* obj in sortedArray)
+    {
+        debug = [NSString stringWithFormat:@"%@%@: %@\n",debug,obj.user_id_s,obj.similarity];
+    }
     return sortedArray;
 }
 

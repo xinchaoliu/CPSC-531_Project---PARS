@@ -5,7 +5,7 @@
 //  Created by Xinchao Liu on 4/27/13.
 //  Copyright (c) 2013 Project. All rights reserved.
 //
-
+extern NSString* debug;
 #import "LoginViewController.h"
 
 @interface LoginViewController ()
@@ -56,6 +56,7 @@
         self.emailTextField.text = nil;
         self.passwordTextField.text = nil;
         self.navBar.topItem.title = @"PARS Demo";
+        debug = @"";
     }
     else
         self.navBar.topItem.title = @"Wrong Password";

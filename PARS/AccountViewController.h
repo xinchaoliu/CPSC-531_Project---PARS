@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSMutableArray* friendsAppList;
 @property (strong, nonatomic) NSMutableArray* appList;
 @property (strong, nonatomic) NSString* appListNavBarTitle;
+@property (weak, nonatomic) IBOutlet UITextView *debugTextView;
 
 - (IBAction)signoutButtonPressed:(id)sender;
 
