@@ -39,7 +39,6 @@ extern NSString* debug;
     myAppList = [db getMyAppListWithUserID:user.user_id];
     parsAppList = [db getPARSAppListWithUserID:user.user_id];
     friendsAppList = [db getFriendsAppListWithUserID:user.user_id];
-    self.debugTextView.text = debug;
 }
 
 - (void)didReceiveMemoryWarning

@@ -226,15 +226,17 @@ static PARSDatabase* _databaseObj;
 
 - (NSMutableArray*) getPARSAppListWithUserID:(NSString*)theUserID
 {
-    NSString* sUserId = @"";
+    NSString* sUserId;
     NSArray* similarUserList = [self getSimilarUserWithUserID:theUserID];
-    for(PARSUserData* obj in similarUserList){
-        sUserId = [NSString stringWithFormat:@"%@%@,",sUserId,obj.user_id_s];
-    }
+    PARSUserData* first = [similarUserList objectAtIndex:0];
+    PARSUserData* second = [similarUserList objectAtIndex:1];
+    PARSUserData* third = [similarUserList objectAtIndex:2];
+    sUserId = [NSString stringWithFormat:@"%@, %@, %@",first.user_id_s,second.user_id_s,third.user_id_s];
     NSLog(@"%@",sUserId);
     NSMutableArray* appList = [[NSMutableArray alloc] init];
     NSString* query =
-    [NSString stringWithFormat:@"SELECT app.*, SUM(likes_rate) AS total_friends_likes_rate FROM likes INNER JOIN app ON app.app_id = likes.app_id WHERE likes.user_id IN (%@0) AND likes.app_id NOT IN (SELECT app_id FROM has WHERE user_id = '%@') GROUP BY app_id ORDER BY total_friends_likes_rate DESC LIMIT 20",sUserId,theUserID];
+    [NSString stringWithFormat:@"SELECT app.*, SUM(likes_rate) AS total_friends_likes_rate FROM likes INNER JOIN app ON app.app_id = likes.app_id WHERE likes.user_id IN (%@) AND likes.app_id NOT IN (SELECT app_id FROM has WHERE user_id = '%@') GROUP BY app_id ORDER BY total_friends_likes_rate DESC LIMIT 20",sUserId,theUserID];
+    NSLog(@"%@",query);
     sqlite3_stmt *statement;
     const unsigned char* text;
     NSString* appID;
@@ -384,6 +386,7 @@ static PARSDatabase* _databaseObj;
     for (PARSUserData* obj in sortedArray)
     {
         debug = [NSString stringWithFormat:@"%@%@: %@\n",debug,obj.user_id_s,obj.similarity];
+        NSLog(@"user_id = %@, similarity score = %@", obj.user_id_s,obj.similarity);
     }
     return sortedArray;
 }
